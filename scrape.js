@@ -7,7 +7,7 @@
     const url = 'https://somethinghitme.com/';
 
     // Write Headers
-    writeStream.write(`Title,Link,Date \n`);
+    writeStream.write(`Blog Num,Title,Link,Date \n`);
 
     request(url, (error, response, html) =>
     {
@@ -23,7 +23,7 @@
                 const date = '"' + $(el).find('small a').text() + '"';
 
                 // Write Row To CSV
-                writeStream.write(`${title},${link},${date}\n`);
+                writeStream.write(i + 1 + `,${title},${link},${date}\n`);
             });
 
             console.log('Scraping Done...');
